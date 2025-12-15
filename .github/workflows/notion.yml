@@ -1,23 +1,31 @@
-name: Notion AI Processor
+name: Notion Auto Process
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # 30分ごと
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install notion-client openai
 
-      - run: python process_memos.py
+      - name: Run script
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: |
+          python main.py
