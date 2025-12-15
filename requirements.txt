@@ -1,0 +1,3 @@
+notion-client
+openai
+psycopg2-binary
