@@ -181,3 +181,20 @@ local_settings.py
 # キャッシュや一時ファイルは除外
 .obsidian/cache/
 .obsidian/graph.json
+
+# --- Obsidian関連 ---
+# リポジトリ内に作成されるノート用フォルダを無視
+zettelkasten-vault/
+
+# 万が一フォルダ内にObsidianの設定が作られても無視
+.obsidian/
+
+# --- スクリプト・実行環境関連 ---
+.env
+__pycache__/
+*.py[cod]
+logs/
+
+# --- OS・エクスプローラー関連 ---
+.DS_Store
+Thumbs.db
