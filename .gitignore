@@ -167,6 +167,17 @@ $RECYCLE.BIN/
 local_settings.py
 .env.example
 
+# プラグインの本体（実行ファイル）は除外（各デバイスで自動ダウンロードされるため）
+.obsidian/plugins/*
+
+# ただし、どのプラグインをインストールしているかというリストと設定ファイルは同期する
+!.obsidian/plugins/*/
+!.obsidian/plugins/*/*.json
+
+# ワークスペースの状態（開いているタブなど）はデバイスごとに違うので除外
+.obsidian/workspace
 .obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.trash/
+
+# キャッシュや一時ファイルは除外
+.obsidian/cache/
+.obsidian/graph.json
